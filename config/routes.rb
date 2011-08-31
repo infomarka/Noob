@@ -1,4 +1,8 @@
 FirstApp::Application.routes.draw do
+  root :to => 'application#index'
+  #get '/listas' => 'lista_emails#list', :as => 'lista_emails'
+  post "/lista/create" => "lista_emails#create", :as => "create_lista_email"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
