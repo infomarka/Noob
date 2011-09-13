@@ -1,0 +1,25 @@
+/* 
+    Document   : layout
+    Created on : 06/09/2011, 15:27:46
+    Author     : infomarka
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+.conteudo{
+    
+}
+.notice{
+    color: #14bd12
+}
+.alert{
+    color: #FF0000;
+}
+root { 
+    display: block;
+}
+
