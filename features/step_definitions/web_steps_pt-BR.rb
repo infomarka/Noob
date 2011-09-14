@@ -45,7 +45,7 @@ Quando /^eu aperto "([^"]*)"$/ do |button|
   When %{I press "#{button}"}
 end
 
-Quando /^eu clico "([^"]*)"$/ do |link|
+Quando /^eu clico em "([^"]*)"$/ do |link|
   When %{I follow "#{link}"}
 end
 
