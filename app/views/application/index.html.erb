@@ -1,5 +1,5 @@
 <%= form_for @lista_email, :url => create_lista_email_path do |f| %>
-<%=  f.label :email, "E-mail:"  %>
-<%=  f.text_field :email  %><br/>
-<%= f.submit "Enviar" %>
+  <%=  f.label :email, "E-mail:"  %>
+  <%=  f.text_field :email  %><br/><br/>
+  <%= f.submit "Enviar" , :class => "ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" %>
 <%  end %>
