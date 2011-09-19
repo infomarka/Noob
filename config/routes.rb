@@ -1,5 +1,7 @@
 FirstApp::Application.routes.draw do
-  devise_for :usuarios
+  devise_for :usuarios do
+    get "/logout" => "devise/sessions#destroy", :as => "logout"
+  end
 
   root :to => 'application#index'
   #get '/listas' => 'lista_emails#list', :as => 'lista_emails'

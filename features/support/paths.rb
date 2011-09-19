@@ -16,6 +16,9 @@ module NavigationHelpers
     when /p[aá]gina principal/
       '/'
 
+    when /p[aá]gina de login/
+      new_usuario_session_path
+
     when /p[aá]gina de cadastro/
       new_usuario_registration_path
     # Add more mappings here.
