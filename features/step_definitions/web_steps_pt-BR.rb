@@ -23,6 +23,17 @@
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
 require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
+
+Dado /^que eu estou logado como "(.*)" com a senha "(.*)"$/ do |email, senha|
+    Dado %{que eu estou na página principal}
+    Quando %{eu clico em "Login"}
+    Então %{eu devo estar na página de login}
+    Quando %{eu preencho "usuario_email" com "#{email}"}
+    E %{eu preencho "usuario_password" com "#{senha}"}
+    E %{eu aperto "usuario_submit"}
+    Então %{eu devo ver "Conectado com sucesso."}
+end
+
 # Single-line step scoper
 Quando /^(.*) dentro de ([^:]+)$/ do |step, parent|
   with_scope(parent) { Quando step }
@@ -45,7 +56,7 @@ Quando /^eu aperto "([^"]*)"$/ do |button|
   When %{I press "#{button}"}
 end
 
-Quando /^eu clico "([^"]*)"$/ do |link|
+Quando /^eu clico em "([^"]*)"$/ do |link|
   When %{I follow "#{link}"}
 end
 
