@@ -4,28 +4,33 @@ require 'spec_helper'
 describe Grupo do
 
   before do
-    @user = Usuario.create(:email => "loL@lolmail.com", :password => "123456")
-    @user1 = Usuario.create(:email => "loL1@lolmail.com", :password => "123456")
-    @user2 = Usuario.create(:email => "loL2@lolmail.com", :password => "123456")
-    @group = Grupo.create(:nome => "LOLgroup", :descricao => "lol", :dono => @user)
-    @group1 = Grupo.create(:nome => "NOOBgroup", :descricao => "Noob", :dono => @user)
+    @usuario = Usuario.create(:email => "loL@lolmail.com", :password => "123456")
+    @usuario1 = Usuario.create(:email => "loL1@lolmail.com", :password => "123456")
+    @usuario2 = Usuario.create(:email => "loL2@lolmail.com", :password => "123456")
+    @grupo = Grupo.create(:nome => "LOLgrupo", :descricao => "lol", :dono => @usuario)
+    @grupo1 = Grupo.create(:nome => "NOOBgrupo", :descricao => "Noob", :dono => @usuario)
+  end
+
+  it 'testa se grupo tem dono' do
+    grupo = Grupo.new
+    grupo.save.should be_false
   end
   
   it 'testa se dono do grupo é o usuario' do
-    @group.dono.should be_equal @user
+    @grupo.dono.should be_equal @usuario
   end
 
   it 'testa se o grupo tem varios usuarios' do
-    @group.usuarios += [@user1, @user2]
-    @group.usuarios[0].should be_equal @user1
-    @group.usuarios[1].should be_equal @user2
+    @grupo.usuarios += [@usuario1, @usuario2]
+    @grupo.usuarios[0].should be_equal @usuario1
+    @grupo.usuarios[1].should be_equal @usuario2
   end
 
   it 'testa se o usuario é membro de varios grupos' do
-    @group.usuarios << @user1
-    @user1.grupos << @group1
-    @group.usuarios[0].should be_equal @user1
-    @user1.grupos[1].should be_equal @group1
+    @grupo.usuarios << @usuario1
+    @usuario1.grupos << @grupo1
+    @grupo.usuarios[0].should be_equal @usuario1
+    @usuario1.grupos[1].should be_equal @grupo1
   end
 
 end

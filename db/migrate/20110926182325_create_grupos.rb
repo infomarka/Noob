@@ -4,7 +4,6 @@ class CreateGrupos < ActiveRecord::Migration
       t.string :nome
       t.string :descricao
       t.integer :dono_id
-
       t.timestamps
     end
   end
