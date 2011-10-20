@@ -26,11 +26,19 @@ describe Grupo do
     @grupo.usuarios[1].should be_equal @usuario2
   end
 
-  it 'testa se o usuario é membro de varios grupos' do
-    @grupo.usuarios << @usuario1
-    @usuario1.grupos << @grupo1
-    @grupo.usuarios[0].should be_equal @usuario1
-    @usuario1.grupos[1].should be_equal @grupo1
+  it 'testa se grupo tem nome' do
+    grupo = Grupo.new
+    grupo.save.should be_false
+  end
+
+    it 'cria um grupo com varios topicos' do
+    topico1 = Topico.create(:grupo => @grupo, :titulo => 'title1', :usuario => @user)
+    topico2 = Topico.create(:grupo => @grupo, :titulo => 'title2', :usuario => @user)
+    topico1.posts.build :conteudo => 'bla'
+    topico2.posts.build :conteudo => 'bla'
+    @grupo.topicos += [topico1, topico2]
+    topico1.grupo.should be_equal @grupo
+    @grupo.topicos[1].should be_equal topico2
   end
 
 end

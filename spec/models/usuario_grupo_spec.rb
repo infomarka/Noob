@@ -1,5 +1,1 @@
-require 'spec_helper'
-
-describe UsuarioGrupo do
-  pending "add some examples to (or delete) #{__FILE__}"
-end
+puts "Hello World"
