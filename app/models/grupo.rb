@@ -4,4 +4,5 @@ class Grupo < ActiveRecord::Base
   has_many :usuarios, :through => :usuario_grupos
   belongs_to :dono, :class_name => 'Usuario'
   validates :dono, :presence => true
+  validates :nome, :presence => true
 end

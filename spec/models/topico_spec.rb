@@ -12,16 +12,20 @@ describe Topico do
     topico.save.should be_false
   end
 
-  it 'cria um grupo com varios topicos' do
-    topico1 = Topico.create(:grupo => @grupo)
-    topico2 = Topico.create(:grupo => @grupo)
-    topico1.grupo.should be_equal @grupo
-    @grupo.topicos[1].id.should be_equal topico2.id
+  it 'testa se o topico pode ser criado sem titulo' do
+    topico = Topico.new(:grupo => @grupo)
+    topico.save.should be_false
   end
 
-  it 'testa se topico eh do grupo' do
-    topico = Topico.create(:grupo => @grupo)
-    @grupo.topicos[0].id.should be_equal topico.id
+  it 'testa se o topico pode ser criado sem dono' do
+    topico = Topico.new(:grupo => @grupo, :titulo => 'Primeiro Topico')
+    topico.save.should be_false
+  end
+
+  it 'testa se o post foi criado com topico' do
+    topico = Topico.new(:grupo => @grupo, :titulo => 'Primeiro Topico', :usuario => @user)
+    topico.posts.build :conteudo => 'bla'
+    topico.save.should be_false
   end
 
 end
